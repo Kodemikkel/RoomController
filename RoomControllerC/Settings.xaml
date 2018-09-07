@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="RoomControllerC.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RoomControllerC"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <CollectionViewSource x:Name="cvs" />
+        <DataTemplate x:Key="BluetoothDevicesViewTemplate">
+            <Grid Margin="5">
+                <Border Grid.Column="1" Margin="5">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Name:" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" TextWrapping="WrapWholeWords"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <TextBox x:Name="SettingsHeader" Grid.Column="2" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="Settings" FontFamily="Asimov" FontSize="72" FontWeight="Bold" FontStyle="Italic" TextAlignment="Center" IsReadOnly="True" BorderBrush="{x:Null}" Background="{x:Null}"/>
+        <TextBox x:Name="BtInfo" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24"/>
+        <Button x:Name="ListDevicesButton" Grid.Row="1" Grid.Column="1" Margin="0,0,0,0" Content="List devices" Click="ListDevicesButton_Click" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <Button x:Name="ConnectButton" Grid.Row="1" Grid.Column="2" Margin="0,0,0,0" Content="Connect" Click="ConnectButton_Click" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <Button x:Name="ConnectionTestButton" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Margin="20,0,0,0" Content="Connection test" Click="ConnectionTestButton_Click" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <ListView x:Name="BluetoothDevicesView" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="3" Margin="10,0,0,0" ItemTemplate="{StaticResource BluetoothDevicesViewTemplate}" ItemsSource="{Binding Path=DevicesCollection}"/>
+    </Grid>
+</Page>
